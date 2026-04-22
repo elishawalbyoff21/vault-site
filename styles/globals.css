@@ -1,0 +1,79 @@
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --black: #000000;
+  --void: #050505;
+  --surface: #0d0d0d;
+  --surface-2: #141414;
+  --surface-3: #1c1c1c;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: #7a6230;
+  --red: #8b0000;
+  --red-bright: #c0392b;
+  --white: #f5f0e8;
+  --white-dim: #a09890;
+  --border: #1f1f1f;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--white);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  cursor: default;
+  overflow-x: hidden;
+}
+
+/* Custom cursor */
+body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23c9a84c'/%3E%3C/svg%3E") 8 8, crosshair; }
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-light); }
+
+button {
+  font-family: 'JetBrains Mono', monospace;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+/* Prevent content theft */
+::selection { background: transparent; }
+img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+
+/* Noise texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Gold divider */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1rem auto;
+  opacity: 0.5;
+}
+
+/* Utility */
+.mono { font-family: 'JetBrains Mono', monospace; }
